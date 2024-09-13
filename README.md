@@ -1,20 +1,22 @@
 
-# **Volatile Organic Compounds (VOCs) Data Dnalysis**
+# **Volatile Organic Compounds (VOCs) Data Analysis**
 
 ## Table of Contents
 
-- [**Volatile Organic Compounds (VOCs) Data Dnalysis**](#--volatile-organic-compounds--vocs--data-dnalysis--)
+- [**Volatile Organic Compounds (VOCs) Data Analysis**](#--volatile-organic-compounds--vocs--data-analysis--)
   * [Table of Contents](#table-of-contents)
   * [Problem Statement](#problem-statement)
   * [Background](#background)
   * [Goal](#goal)
   * [Methods](#methods)
   * [Results](#results)
+    + [Breath Biopsy® OMNI®:](#breath-biopsy--omni--)
     + [A Clinical Breathomics Dataset:](#a-clinical-breathomics-dataset-)
     + [Breast cancer-related VOCs:](#breast-cancer-related-vocs-)
   * [Recommendation](#recommendation)
   * [Risks and Assumptions](#risks-and-assumptions)
   * [Data Availability](#data-availability)
+
 
 In this repository we explore 3 datasets of VOCs in order to showcase analytical methods that can be used to gain insight into their use. These include:
 
@@ -44,6 +46,11 @@ The datasets are fairly small, of 166 (Breath Biopsy® OMNI® – Example), 121 
 We replaced the missing data with the mean of each class where needed, RandomOversampled rows to match the number of examples to the majority class, and scale each variable via standardisation. Subsequently, we did a 5-Kfold split in order to train the ML models including: Decision Tree-based,  Random Forest,  Gradient Boosting, K-Nearest Neighbours and Support Vector Machines. We judged our model based on Accuracy, Precision, Recall and F1 score in the binary classification, and just on accuracy for the multi-class classification.
 
 ## Results 
+
+###  Breath Biopsy® OMNI®:
+
+We identified  that the total number of features detected on breath that have more than 100000 and an average of more than mean + 3 * std of blanks is 515 VOCs. Subsequently, we plotted the percentage of features detected on breath samples, where over 350 VOCs appear 50% of the time after filtering. Lastly we plotted the
+relative standard deviation for VOCs detected on breath in >50% of samples, where the median inter-subject RSD across these VOCs was 61.84
 
 ### A Clinical Breathomics Dataset:
 
@@ -92,4 +99,3 @@ Each dataset is described and are accessible from their respective papers, and t
  3. Breast cancer-related VOCs:
 	 -Basic_clinic_info.xlsx
 	 -All patients breathomics recordings saved as .txt in the breath-omics/ folder
-

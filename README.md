@@ -1,24 +1,29 @@
 
 # **Volatile Organic Compounds (VOCs) Data Analysis**
 
+In this repository we explore 3 datasets of VOCs in order to showcase analytical methods that can be used to gain insight into their use. 
+
+The results are captured in the slides of the file **"VOC analysis presentation.pdf"** if you just want to read the figure outputs.
+
 ## Table of Contents
 
 - [**Volatile Organic Compounds (VOCs) Data Analysis**](#--volatile-organic-compounds--vocs--data-analysis--)
   * [Table of Contents](#table-of-contents)
+  * [Data Sources](#data-sources)
   * [Problem Statement](#problem-statement)
   * [Background](#background)
   * [Goal](#goal)
   * [Methods](#methods)
   * [Results](#results)
-    + [Breath Biopsy® OMNI®:](#breath-biopsy--omni--)
-    + [A Clinical Breathomics Dataset:](#a-clinical-breathomics-dataset-)
-    + [Breast cancer-related VOCs:](#breast-cancer-related-vocs-)
+    + [Breath Biopsy® OMNI](#breath-biopsy-omni)
+    + [A Clinical Breathomics Dataset](#a-clinical-breathomics-dataset)
+    + [Breast cancer-related VOCs](#breast-cancer-related-vocs)
   * [Recommendation](#recommendation)
   * [Risks and Assumptions](#risks-and-assumptions)
-  * [Data Availability](#data-availability)
 
+## Data Sources
 
-In this repository we explore 3 datasets of VOCs in order to showcase analytical methods that can be used to gain insight into their use. These include:
+The following datasets were used:
 
  1. [Breath Biopsy® OMNI® – Example
     Dataset](https://www.owlstonemedical.com/downloads/breath-biopsy-omni-dataset/)
@@ -32,6 +37,27 @@ This study entailed a comprehensive GC‒MS analysis conducted on 121 patient sa
  3. [Breast cancer-related VOCs](https://data.mendeley.com/datasets/h7fvhycmmn/1)
 
  This dataset was collected to evaluate the diagnostic performance of breath-omics to differentiate between benign and malignant breast lesions and assess the diagnostic performance of a multi-omics approach combining breath-omics, ultrasound radiomics, and clinic-omics via a nested cohort study. This dataset includes three parts data all finally enroll 238 participants: 1) breath-omics data: the mass spectrum of participants breath samples on high-pressure photon ionization time-of-flight mass spectrometry (HPPI-TOF-MS); 2) basic clinic data: the basic clinical characteristics of all enrolled participant; 3) ultrasound radiomics data: the radiomics features calculated based the delineated lesion via Pyradiomics package.
+
+Each dataset is described and can be downloaded from their respective links, and the files we utilised for each project were:
+ 1. Breath Biopsy® OMNI® – Example:
+    
+    -Dataset: "Breath Biopsy OMNI example dataset.csv"
+    
+ 3. A Clinical Breathomics Dataset:
+    
+	-Asthma_peaktable_ver3.csv
+
+	-Bronchi_peaktable_ver3.csv
+
+	-COPD_peaktable_ver3.csv
+
+	-CBD_metadata_ver3.xlsx
+
+ 5. Breast cancer-related VOCs:
+    
+	 -Basic_clinic_info.xlsx
+
+	 -All patients breathomics recordings saved as .txt in the breath-omics/ folder
 
 ## Problem Statement
 Each dataset presents its own problem:
@@ -56,12 +82,12 @@ We replaced the missing data with the mean of each class where needed, RandomOve
 
 ## Results 
 
-###  Breath Biopsy® OMNI®:
+###  Breath Biopsy® OMNI
 
 We identified  that the total number of features detected on breath that have more than 100000 and an average of more than mean + 3 * std of blanks is 515 VOCs. Subsequently, we plotted the percentage of features detected on breath samples, where over 350 VOCs appear 50% of the time after filtering. Lastly we plotted the
 relative standard deviation for VOCs detected on breath in >50% of samples, where the median inter-subject RSD across these VOCs was 61.84
 
-### A Clinical Breathomics Dataset:
+### A Clinical Breathomics Dataset
 
 The Random forest achieved an average accuracy of 95.83% across 5 fold. By utilising SHAP values, we have identified the main 5 VOCs from individuals with asthma, bronchiectasis, and chronic obstructive pulmonary disease:
 
@@ -77,7 +103,7 @@ The Random forest achieved an average accuracy of 95.83% across 5 fold. By utili
 
 They proved to be better biomarkers than physical descriptors such as sex,	age,	FVC PP,	FEV10 PP,	BH (cm)	BW (kg), and	BMI.
 
-### Breast cancer-related VOCs:
+### Breast cancer-related VOCs
 The Random forest achieved an accuracy of 94.11%, 93.55% Precision, 98.16% Recall and 95.74% F1-score across 5 fold. By utilising SHAP values, we have identified the main 5 VOCs from individuals with malignant breast cancer:
 
 | m/z |  Potential VOCs  | CAS number | Molecular weight | Molecular formula | feature importance |    p-value   |
@@ -96,16 +122,3 @@ The models could be improved by exploring more complex models such as ensembled 
 
 ## Risks and Assumptions
 The results of this analysis should be compared with larger population sizes, after comparing the VOCs recorded with actual laboratory results of real life scenarios. Additionally, as we have not recorded the data ourselves, there might be errors unbeknownst to us regarding data quality, thus we advice not to utilise the findings of our analysis as a source of truth.
-
-## Data Availability
-Each dataset is described and are accessible from their respective papers, and the files we utilised for each project were:
- 1. Breath Biopsy® OMNI® – Example:
-    -Dataset: "Breath Biopsy OMNI example dataset.csv"
- 2. A Clinical Breathomics Dataset:
-	-Asthma_peaktable_ver3.csv
-	-Bronchi_peaktable_ver3.csv
-	-COPD_peaktable_ver3.csv
-	-CBD_metadata_ver3.xlsx
- 3. Breast cancer-related VOCs:
-	 -Basic_clinic_info.xlsx
-	 -All patients breathomics recordings saved as .txt in the breath-omics/ folder

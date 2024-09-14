@@ -76,7 +76,7 @@ Using advanced data modelling techniques, we want to make gain insights of VOCs 
 
 ## Methods
 
-The datasets are fairly small, of 166 (Breath Biopsy® OMNI® – Example), 121 (A Clinical Breathomics Dataset) and 476 (Breast cancer-related VOCs) examples. For the second dataset we have "Disease" as a response variable, making it a multi-class problem of asthma/bronchiectasis/COPD, whereas the third dataset the response variable is "Label", a binary category of benign/malignant. While we could classify the examples of the first dataset between "breath" and "blank", the reference article indicated that a simple threshold of 3 standard deviations from the blank samples would suffice, thus we employed that. The second and third dataset have patient data in addition to the VOCs, and we kept them in order to evaluate if the former are stronger predictors than the latter. 
+The datasets are fairly small, of 166 (Breath Biopsy® OMNI® – Example), 121 (A Clinical Breathomics Dataset) and 238 (Breast cancer-related VOCs) examples. For the second dataset we have "Disease" as a response variable, making it a multi-class problem of asthma/bronchiectasis/COPD, whereas the third dataset the response variable is "Label", a binary category of benign/malignant. While we could classify the examples of the first dataset between "breath" and "blank", the reference article indicated that a simple threshold of 3 standard deviations from the blank samples would suffice, thus we employed that. The second and third dataset have patient data in addition to the VOCs, and we kept them in order to evaluate if the former are stronger predictors than the latter. 
 
 We replaced the missing data with the mean of each class where needed, RandomOversampled rows to match the number of examples to the majority class, and scale each variable via standardisation. Subsequently, we did a 5-Kfold split in order to train the ML models including: Decision Tree-based,  Random Forest,  Gradient Boosting, K-Nearest Neighbours and Support Vector Machines. We judged our model based on Accuracy, Precision, Recall and F1 score in the binary classification, and just on accuracy for the multi-class classification. Lastly we employed a Mann–Whitney U test to evaluate if there is a statistical difference between the two groups for each of the top 5 features highlighted by the SHAP values. 
 
@@ -104,7 +104,7 @@ The Random forest achieved an average accuracy of 95.83% across 5 fold. By utili
 They proved to be better biomarkers than physical descriptors such as sex,	age,	FVC PP,	FEV10 PP,	BH (cm)	BW (kg), and	BMI.
 
 ### Breast cancer-related VOCs
-The Random forest achieved an accuracy of 94.11%, 93.55% Precision, 98.16% Recall and 95.74% F1-score across 5 fold. By utilising SHAP values, we have identified the main 5 VOCs from individuals with malignant breast cancer:
+The Random forest achieved an accuracy of 85.72%, 87.65% Precision, 92.28% Recall and 89.66% F1-score across 5 fold. By utilising SHAP values, we have identified the main 5 VOCs from individuals with malignant breast cancer:
 
 | m/z |  Potential VOCs  | CAS number | Molecular weight | Molecular formula | feature importance |    p-value   |
 | --- | ---------------- | ---------- | ---------------- | ----------------- | ------------------ | ------------ |
